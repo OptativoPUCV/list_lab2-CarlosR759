@@ -29,7 +29,15 @@ Node * createNode(const void * data) {
 }
 
 List * createList() {
-     return NULL;
+    List *lista = (List *) malloc(sizeof(List) );
+    if(lista == NULL){
+        printf("No hay suficiente espacio en la memoria\n"); exit(1);
+    }
+    lista->head = NULL;
+    lista->tail = NULL;
+    lista->current = NULL;
+
+     return lista;
 }
 
 void * firstList(List * list) {
