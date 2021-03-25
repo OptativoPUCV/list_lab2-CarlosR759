@@ -121,6 +121,7 @@ void * popCurrent(List * list) {
     //Caso head//
     if(nodoABorrar->prev == NULL){
         list->head = list->head->next;
+        list->head->prev = NULL;
         list->current = list->head;
         nodoABorrar->next = NULL;
         return (void *) nodoABorrar->data;
