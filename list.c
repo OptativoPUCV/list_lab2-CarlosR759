@@ -47,9 +47,10 @@ void * firstList(List * list) {
 
 void * nextList(List * list) {
     if( (list->current) && (list->current->next != NULL) )
-    list->current = list->current->next;
+        list->current = list->current->next;
     else
         return NULL;
+
     return (void *)list->current->data;
 }
 
@@ -59,13 +60,17 @@ void * lastList(List * list) {
 }
 
 void * prevList(List * list) {
-    list->current = list->current->prev; 
+    if( (list->current) && (list->current->prev != NULL) )
+        list->current = list->current->prev; 
+    else
+        return NULL;
+        
     return (void *) list->current->data;
 }
 
 void pushFront(List * list, const void * data) {
     Node *nuevoNodo = createNode( (void *) data); 
-    
+
     if(nuevoNodo == NULL){
         printf("No hay suficiente espacio en la memoria\n"); exit(1);
     }
