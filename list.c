@@ -96,6 +96,7 @@ void pushBack(List * list, const void * data) {
 }
 
 void pushCurrent(List * list, const void * data) {
+
 }
 
 void * popFront(List * list) {
@@ -109,6 +110,39 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
+    Node *nodoABorrar = (Node *)  malloc(sizeof(Node) );
+
+    if(nodoABorrar == NULL){
+        printf("No hay suficiente espacio en la memoria\n"); exit(1);;
+    }
+
+    nodoABorrar = list->current;
+
+    //Caso head//
+    if(nodoABorrar->prev == NULL){
+        list->head = list->head->next;
+        list->current = list->head;
+        nodoABorrar->next = NULL;
+        return (void *) nodoABorrar->data;
+
+    //Caso cola //
+    }else if(nodoABorrar->next == NULL){
+        list->tail = list->tail->prev;
+        list->current = list->tail;
+        list->tail->next = NULL;
+        nodoABorrar->prev = NULL;
+        return (void *) nodoABorrar->data; 
+
+    //Caso cuando nodo está al medio//
+    }else{
+        list->current = nodoABorrar->prev;
+        list->current->next = nodoABorrar->next;
+        nodoABorrar->next = NULL;
+        nodoABorrar->prev = NULL;
+        return (void *) nodoABorrar->data;
+    }
+
+    
     return NULL;
 }
 
