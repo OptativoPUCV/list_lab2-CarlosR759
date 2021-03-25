@@ -64,8 +64,13 @@ void * prevList(List * list) {
 }
 
 void pushFront(List * list, const void * data) {
+    Node *nuevoNodo = createNode( (void *) data); 
+    
+    if(nuevoNodo == NULL){
+        printf("No hay suficiente espacio en la memoria\n"); exit(1);
+    }
 
-
+    return;
 }
 
 void pushBack(List * list, const void * data) {
