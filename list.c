@@ -124,6 +124,7 @@ void * popCurrent(List * list) {
         list->head->prev = NULL;
         list->current = list->head;
         nodoABorrar->next = NULL;
+        nodoABorrar->prev = NULL;
         return (void *) nodoABorrar->data;
 
     //Caso cola //
@@ -132,6 +133,7 @@ void * popCurrent(List * list) {
         list->current = list->tail;
         list->tail->next = NULL;
         nodoABorrar->prev = NULL;
+        nodoABorrar->next = NULL;
         return (void *) nodoABorrar->data; 
 
     //Caso cuando nodo está al medio//
