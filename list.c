@@ -74,9 +74,9 @@ void pushFront(List * list, const void * data) {
     if(nuevoNodo == NULL){
         printf("No hay suficiente espacio en la memoria\n"); exit(1);
     }
-  
-    nuevoNodo->next = list->head;
+
     list->head->prev = nuevoNodo;
+    nuevoNodo->next = list->head;
     list->head = nuevoNodo;
 
     return;
