@@ -96,6 +96,7 @@ void pushBack(List * list, const void * data) {
 }
 
 void pushCurrent(List * list, const void * data) {
+    //Revisar esto de nuevo por si acaso :3 //
     Node *nodoNuevo = createNode( (void *) data);
     if(nodoNuevo == NULL){
         printf("No hay suficiente espacio en la memoria\n"); exit(1);
