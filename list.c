@@ -100,11 +100,20 @@ void pushCurrent(List * list, const void * data) {
     if(nodoNuevo == NULL){
         printf("No hay suficiente espacio en la memoria\n"); exit(1);
     }
+    nodoNuevo->prev = list->current;
 
-    nodoNuevo->data = (void *) data;
-    nodoNuevo->prev = list->tail;
-    list->tail->next = nodoNuevo;
-    list->tail = nodoNuevo;
+    if(list->current->next == NULL){
+        list->current->next = nodoNuevo;
+        nodoNuevo->prev = list->current;
+        list->current = nodoNuevo;
+        list->tail = list->current;
+        
+    }else{
+        list->current->next = nodoNuevo;
+        nodoNuevo->prev = list->current;
+        list->current = nodoNuevo;
+    }
+
 
     return;
 }
