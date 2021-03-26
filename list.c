@@ -120,7 +120,7 @@ void * popCurrent(List * list) {
 
     //Caso head//
     if(nodoABorrar->prev == NULL){
-        list->head = list->head->next;
+        list->head = list->current->next;
         list->head->prev = NULL;
         list->current = list->head;
         nodoABorrar->next = NULL;
@@ -129,7 +129,7 @@ void * popCurrent(List * list) {
 
     //Caso cola //
     }else if(nodoABorrar->next == NULL){
-        list->tail = list->tail->prev;
+        list->tail = list->current->prev;
         list->current = list->tail;
         list->tail->next = NULL;
         nodoABorrar->prev = NULL;
@@ -138,10 +138,10 @@ void * popCurrent(List * list) {
 
     //Caso cuando nodo está al medio//
     }else{
-        list->current = nodoABorrar->prev;
-        list->current->next = nodoABorrar->next;
-        nodoABorrar->next = NULL;
+        list->current->next->prev = list->current->prev;
+        list->current->prev->next = list->current->next;
         nodoABorrar->prev = NULL;
+        nodoABorrar->next = NULL;
         return (void *) nodoABorrar->data;
     }
 
