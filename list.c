@@ -96,7 +96,17 @@ void pushBack(List * list, const void * data) {
 }
 
 void pushCurrent(List * list, const void * data) {
+    Node *nodoNuevo = (Node *) malloc(sizeof(Node) );
+    if(nodoNuevo == NULL){
+        printf("No hay suficiente espacio en la memoria\n"); exit(1);
+    }
 
+    nodoNuevo->data = (void *) data;
+    nodoNuevo->prev = list->tail;
+    list->tail->next = nodoNuevo;
+    list->tail = nodoNuevo;
+
+    return;
 }
 
 void * popFront(List * list) {
