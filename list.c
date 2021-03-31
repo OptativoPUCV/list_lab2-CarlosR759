@@ -132,7 +132,7 @@ void * popBack(List * list) {
 
 void * popCurrent(List * list) {
     Node *nodoABorrar = (Node *)  malloc(sizeof(Node) );
-    long int *numero;
+    long int *numero = NULL;
 
     if(nodoABorrar == NULL){
         printf("No hay suficiente espacio en la memoria\n"); exit(1);;
