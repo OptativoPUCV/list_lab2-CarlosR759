@@ -132,6 +132,7 @@ void * popBack(List * list) {
 
 void * popCurrent(List * list) {
     Node *nodoABorrar = (Node *)  malloc(sizeof(Node) );
+    long int *numero;
 
     if(nodoABorrar == NULL){
         printf("No hay suficiente espacio en la memoria\n"); exit(1);;
@@ -146,7 +147,9 @@ void * popCurrent(List * list) {
         list->current = list->head;
         nodoABorrar->next = NULL;
         nodoABorrar->prev = NULL;
-        return (void *) nodoABorrar->data;
+        numero = (long int *) nodoABorrar->data;
+        free(nodoABorrar); 
+        return (void *) numero;
 
     //Caso cola //
     }else if(nodoABorrar->next == NULL){
@@ -155,7 +158,9 @@ void * popCurrent(List * list) {
         list->tail->next = NULL;
         nodoABorrar->prev = NULL;
         nodoABorrar->next = NULL;
-        return (void *) nodoABorrar->data; 
+        numero = (long int *) nodoABorrar->data;
+        free(nodoABorrar);
+        return (void *) numero; 
 
     //Caso cuando nodo está al medio//
     }else{
@@ -163,7 +168,9 @@ void * popCurrent(List * list) {
         list->current->prev->next = list->current->next;
         nodoABorrar->prev = NULL;
         nodoABorrar->next = NULL;
-        return (void *) nodoABorrar->data;
+        numero = (long int *) nodoABorrar->data;
+        free(nodoABorrar);
+        return (void *) numero;
     }
 
     
