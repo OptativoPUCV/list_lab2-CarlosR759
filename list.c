@@ -74,7 +74,7 @@ void pushFront(List * list, const void * data) {
     if(nuevoNodo == NULL){
         printf("No hay suficiente espacio en la memoria\n"); exit(1);
     }
-    // <3 Si no hay nodos en la lista se actualizan datos del if <3 //
+    // Si no hay nodos en la lista se actualizan datos de list//
     if(list->head == NULL){
         list->head = nuevoNodo;
         list->tail = nuevoNodo;
@@ -82,7 +82,6 @@ void pushFront(List * list, const void * data) {
     }
 
     // Si ya hay elemtos en la lista se ejecutan las siguientes instrucciones //
-    
     list->head->prev = nuevoNodo;
     nuevoNodo->next = list->head;
     list->head = nuevoNodo;
@@ -96,21 +95,23 @@ void pushBack(List * list, const void * data) {
 }
 
 void pushCurrent(List * list, const void * data) {
-    //Revisar esto de nuevo por si acaso :3 //
     Node *nodoNuevo = createNode( (void *) data);
     if(nodoNuevo == NULL){
         printf("No hay suficiente espacio en la memoria\n"); exit(1);
     }
     nodoNuevo->prev = list->current;
 
+    //Cuando current es cola de la lista//
     if(list->current->next == NULL){
         list->current->next = nodoNuevo;
         nodoNuevo->prev = list->current;
         list->current = nodoNuevo;
         list->tail = list->current;
-        
+
+    //Cuando current está entre medio// 
     }else{
         list->current->next = nodoNuevo;
+        nodoNuevo->next = list->current->next->next; //Lineanueva;
         nodoNuevo->prev = list->current;
         list->current = nodoNuevo;
     }
